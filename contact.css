@@ -1,0 +1,30 @@
+/* ===== BOUTON WHATSAPP ===== */
+.wa{
+  position:fixed;
+  right:max(16px,env(safe-area-inset-right,0px));
+  bottom:calc(18px + env(safe-area-inset-bottom,0px));
+  z-index:30;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:58px;
+  height:58px;
+  background:#0F7B6C;
+  color:#fff;
+  border-radius:29px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 6px 18px -6px rgba(20,24,58,.55);
+  transition:transform .15s var(--ease);
+}
+.wa svg{width:30px;height:30px;fill:currentColor;flex:none}
+.wa .wa-t{display:none}
+.wa:active{transform:scale(.94)}
+.wa:focus-visible{outline:3px solid var(--bleu-t);outline-offset:3px}
+
+/* Icône WhatsApp pleine dans le menu (le style .ico est en traits) */
+.ico.plein{fill:currentColor;stroke:none}
+
+/* Laisse la place du bouton en bas de page */
+main{padding-bottom:104px}

@@ -1,0 +1,127 @@
+/* ===== JETONS DE DESIGN : couleurs, polices, formes + couleur de chaque matière =====
+   Pour changer une couleur ou une police du site, c'est ici. */
+
+:root {
+  --papier:#F5F7FC;
+  --carte:#FFFFFF;
+  --encre:#14183A;
+  --encre-douce:#4A5075;
+  --bleu:#2438A8;
+  --bleu-pale:#E4E8FA;
+  --rouge:#C21F2E;
+  --rouge-pale:#FBE6E8;
+  --surligneur:#FFE45C;
+  --ligne:#D5DBF0;
+  --philo:#6B3FA0;
+  --philo-pale:#EEE7F7;
+  --histoire:#7A4A32;
+  --histoire-pale:#F3E8E1;
+  --sciences:#0B6F78;
+  --sciences-pale:#DEF1F2;
+  --f-titre:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-note:"Caveat","Segoe Print","Comic Sans MS",cursive;
+  --r-carte:14px;
+  --r-bouton:10px;
+  --ombre:0 1px 0 rgba(20,24,58,.06),0 6px 16px -10px rgba(20,24,58,.35);
+}
+
+.philo {
+  --c:var(--philo);
+  --p:var(--philo-pale);
+}
+
+.histoire {
+  --c:var(--histoire);
+  --p:var(--histoire-pale);
+}
+
+.sciences {
+  --c:var(--sciences);
+  --p:var(--sciences-pale);
+}
+
+.geographie {
+  --c:#7A6100;
+  --p:#F4EFD9;
+}
+
+.francais {
+  --c:#A12A5E;
+  --p:#F8E7EF;
+}
+
+.maths {
+  --c:#2B5C8A;
+  --p:#E4EDF6;
+}
+
+.svt {
+  --c:#2F6E3B;
+  --p:#E3F0E5;
+}
+
+.anglais {
+  --c:#3F4B5B;
+  --p:#E7EAEF;
+}
+
+.espagnol {
+  --c:#B0413E;
+  --p:#F8E6E5;
+}
+
+.allemand {
+  --c:#56711A;
+  --p:#EEF1DE;
+}
+
+/* ===== Formes et mouvement ===== */
+:root{
+  --forme:6px 24px 6px 24px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* ===== Variables « texte » : identiques en mode jour, éclaircies en mode nuit ===== */
+:root{
+  --bleu-t:var(--bleu);
+  --rouge-t:var(--rouge);
+  --avis-fond:#FFF6CC;
+  --avis-bord:#E5CF55;
+}
+.philo,.histoire,.sciences,.geographie,.francais,.maths,.svt,.anglais,.espagnol,.allemand{
+  --ct:var(--c);
+}
+
+/* ===== MODE NUIT (bleu nuit) : activé par l'attribut data-theme="nuit" sur <html> ===== */
+html[data-theme="nuit"]{
+  color-scheme:dark;
+  --papier:#0A1128;
+  --carte:#121B3A;
+  --encre:#E9EDFB;
+  --encre-douce:#AAB4D8;
+  --ligne:#26335F;
+  --bleu:#4A63E8;
+  --bleu-pale:#1B2862;
+  --bleu-t:#A3B4FF;
+  --rouge:#D63D4F;
+  --rouge-pale:#3A1620;
+  --rouge-t:#FF8D9A;
+  --surligneur:rgba(255,228,92,.3);
+  --avis-fond:#3A3410;
+  --avis-bord:#6B5F1F;
+  --philo-pale:#2B2150;
+  --histoire-pale:#3B2B22;
+  --sciences-pale:#0F3A40;
+  --ombre:0 1px 0 rgba(0,0,0,.4),0 8px 22px -12px rgba(0,0,0,.8);
+}
+html[data-theme="nuit"] .philo{--ct:#C9B2F2}
+html[data-theme="nuit"] .histoire{--ct:#E0B89F}
+html[data-theme="nuit"] .sciences{--ct:#6FD0D8}
+html[data-theme="nuit"] .geographie{--ct:#E6CC6A;--p:#34301A}
+html[data-theme="nuit"] .francais{--ct:#F09BC2;--p:#3A1E2E}
+html[data-theme="nuit"] .maths{--ct:#8DBBEA;--p:#1B2D44}
+html[data-theme="nuit"] .svt{--ct:#8FD59F;--p:#1B3322}
+html[data-theme="nuit"] .anglais{--ct:#B9C4D6;--p:#232B38}
+html[data-theme="nuit"] .espagnol{--ct:#F2A19F;--p:#3A2020}
+html[data-theme="nuit"] .allemand{--ct:#B5D275;--p:#2B3318}

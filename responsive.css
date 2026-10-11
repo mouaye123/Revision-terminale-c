@@ -1,0 +1,89 @@
+/* ===== RESPONSIVE : adaptations selon la taille d'écran et les préférences =====
+   Le site est conçu d'abord pour le téléphone (mobile-first) : tous les autres
+   fichiers décrivent l'affichage mobile. Ce fichier ne contient que les
+   adaptations pour la tablette (720 px et plus), l'ordinateur (1000 px et plus)
+   et l'accessibilité (animations réduites). Il doit être chargé EN DERNIER. */
+
+@media (prefers-reduced-motion:reduce) {
+  .flip .in {
+    transition:none;
+  }
+}
+
+@media (min-width:720px) {
+  main,
+  header .in {
+    max-width:720px;
+  }
+
+  main {
+    padding:32px 24px 104px;
+  }
+
+  h1 {
+    font-size:1.875rem;
+  }
+
+  .docs {
+    grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  }
+
+  .flip {
+    height:240px;
+  }
+}
+
+@media (min-width:1000px) {
+  body {
+    font-size:17px;
+  }
+}
+
+@supports selector(:has(*)) {
+  @media (min-width:1000px) {
+    body:has(main>.matiere) main,body:has(main>.matiere) header .in {
+      max-width:1080px;
+    }
+
+    main:has(>.matiere) {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    main:has(>.matiere)>* {
+      grid-column:1/-1;
+      margin-top:0;
+    }
+
+    main:has(>.matiere)>.matiere {
+      grid-column:auto;
+    }
+  }
+}
+
+/* Accueil : titre plus grand sur grand écran */
+@media (min-width:720px){
+  .hero h1{font-size:3rem}
+  .actions{grid-template-columns:1fr 1fr}
+}
+
+/* Bouton WhatsApp : avec son texte sur grand écran */
+@media (min-width:720px){
+  .wa{width:auto;padding:0 24px 0 18px}
+  .wa .wa-t{display:inline}
+}
+
+/* Bannière : même largeur que le contenu */
+@media (min-width:720px){
+  .bandeau .in{max-width:720px}
+}
+@supports selector(:has(*)){
+  @media (min-width:1000px){
+    body:has(main>.matiere) .bandeau .in{max-width:1080px}
+  }
+}
+
+@media (min-width:720px){
+  header #ttl{font-size:1.1875rem}
+}

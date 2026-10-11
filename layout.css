@@ -1,0 +1,199 @@
+/* ===== MISE EN PAGE : en-tête, zone principale, menu burger ===== */
+
+main{
+  max-width:480px;
+  margin:0 auto;
+  padding:26px 20px 36px;
+  outline:0;
+}
+
+main>*+*{
+  margin-top:22px;
+}
+
+header#top{
+  background:var(--papier);
+  color:var(--encre);
+  border-top:6px solid var(--c,var(--bleu));
+  padding:calc(10px + env(safe-area-inset-top,0px)) 20px 10px;
+}
+
+header .in {
+  max-width:480px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-height:40px;
+}
+
+header a{
+  color:var(--encre);
+  font-weight:600;
+  text-decoration:none;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  padding-right:4px;
+}
+
+header #ttl{
+  font-family:var(--f-titre);
+  font-weight:700;
+  font-size:1.1875rem;
+  color:var(--ct,var(--encre));
+}
+
+header :focus-visible{
+  outline-color:var(--bleu-t);
+}
+
+#burger{
+  flex:none;
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  background:var(--carte);
+  border:1.5px solid var(--ligne);
+  color:var(--encre);
+  border-radius:50%;
+}
+
+#burger svg,
+#fermer svg {
+  width:26px;
+  height:26px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2;
+  stroke-linecap:round;
+}
+
+header #ttl {
+  flex:1;
+}
+
+#voile {
+  position:fixed;
+  inset:0;
+  background:rgba(20,24,58,.55);
+  z-index:40;
+}
+
+#menu {
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  width:min(86vw,320px);
+  background:var(--carte);
+  z-index:50;
+  overflow:auto;
+  padding-top:env(safe-area-inset-top,0px);
+  box-shadow:-8px 0 24px -12px rgba(20,24,58,.5);
+}
+
+#menu .mt {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 8px 12px 20px;
+  border-bottom:1px solid var(--ligne);
+}
+
+#menu .mt b {
+  font-family:var(--f-titre);
+  font-size:1.125rem;
+}
+
+#fermer {
+  width:44px;
+  height:44px;
+  background:none;
+  border:0;
+  display:grid;
+  place-items:center;
+  color:var(--encre);
+}
+
+#menu ul {
+  list-style:none;
+  padding:8px 0;
+  margin:0;
+}
+
+#menu a {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-height:52px;
+  padding:0 20px;
+  color:var(--encre);
+  text-decoration:none;
+  font-weight:600;
+}
+
+#menu a[aria-current="page"] {
+  background:var(--bleu-pale);
+  color:var(--bleu-t);
+}
+
+/* La zone principale reçoit le focus après chaque changement de page : pas de cadre autour */
+main:focus,
+main:focus-visible{
+  outline:0;
+}
+
+/* ===== Bouton jour / nuit (en-tête) ===== */
+#theme{
+  flex:none;
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  background:var(--carte);
+  border:1.5px solid var(--ligne);
+  color:var(--encre);
+  border-radius:50%;
+}
+#theme svg{
+  width:22px;
+  height:22px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+#theme .soleil{display:none}
+html[data-theme="nuit"] #theme .lune{display:none}
+html[data-theme="nuit"] #theme .soleil{display:inline}
+
+/* Interrupteur dans le menu */
+.interrupteur{
+  position:relative;
+  flex:none;
+  margin-left:auto;
+  width:44px;
+  height:26px;
+  border-radius:13px;
+  background:var(--ligne);
+  transition:background .25s;
+}
+.interrupteur::after{
+  content:"";
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:#fff;
+  transition:transform .25s var(--ease);
+}
+[aria-checked="true"]>.interrupteur{background:var(--bleu)}
+[aria-checked="true"]>.interrupteur::after{transform:translateX(18px)}
+
+/* Titre d'en-tête un peu plus compact sur petit écran (deux boutons à droite) */
+header #ttl{font-size:1.0625rem;line-height:1.15}

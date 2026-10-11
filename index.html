@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2438A8">
+<title>Révision Terminale C</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/archive.css">
+<link rel="stylesheet" href="css/motion.css">
+<link rel="stylesheet" href="css/intro.css">
+<link rel="stylesheet" href="css/contact.css">
+<link rel="stylesheet" href="css/banner.css">
+<link rel="stylesheet" href="css/defil.css">
+<link rel="stylesheet" href="css/responsive.css">
+<script src="js/theme.js"></script>
+</head>
+<body>
+<header id="top"><div class="in"><a id="back" href="#/" hidden>‹ Retour</a><div id="ttl">Révision Terminale C</div><button id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
+<div id="voile" hidden></div>
+<aside id="menu" aria-label="Menu" hidden>
+<div class="mt"><b>Menu</b><button id="fermer" type="button" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<ul>
+<li><a href="#/" data-nav="home"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Accueil</a></li>
+<li><a href="#/quiz" data-nav="quiz"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/></svg>Quiz aléatoire</a></li>
+<li><a href="#/archive/ajout" data-nav="ajout"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Ajouter un devoir</a></li>
+<li><a href="#/archive" data-nav="archive"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Banque des anciens sujets</a></li>
+<li><a href="#/p" data-nav="p"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Ma progression</a></li>
+<li><a href="#/" data-intro-open><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Comment ça marche</a></li>
+</ul>
+</aside>
+<main id="app" tabindex="-1"><p class="douce">Chargement… Si ce message reste affiché, le dossier « js » n'est pas à côté de index.html : utilise plutôt le fichier revision-unique.html.</p></main>
+<noscript>Cette application a besoin de JavaScript pour fonctionner.</noscript>
+<script src="js/config.js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/data.js"></script>
+<script src="js/questions.js"></script>
+<script src="js/store.js"></script>
+<script src="js/app.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/archive.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/banner.js"></script>
+<script src="js/defil.js"></script>
+<script src="js/compte.js"></script>
+<script src="js/intro.js"></script>
+<script>RV.start();</script>
+</body>
+</html>

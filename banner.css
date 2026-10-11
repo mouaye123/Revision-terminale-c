@@ -1,0 +1,48 @@
+/* ===== BANNIÈRE : remerciements TC 2025/2026 + messages pour les cadets (accueil seulement) ===== */
+@keyframes descendre{from{opacity:0;transform:translateY(-8px)}}
+.bandeau{
+  padding:0 20px;
+  background:var(--bleu-pale);
+  border-bottom:1px solid var(--ligne);
+  animation:descendre .5s var(--ease) backwards;
+}
+.bandeau .in{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  max-width:480px;
+  margin:0 auto;
+  padding:12px 0;
+}
+.bandeau .coeur{width:22px;height:22px;margin-top:1px;color:var(--rouge-t)}
+.bandeau .corps{flex:1;min-width:0}
+.bandeau .merci{margin:0;font-size:.8125rem;line-height:1.4;color:var(--encre-douce)}
+.bandeau .merci b{color:var(--bleu-t)}
+.bandeau .mot{
+  display:block;
+  width:100%;
+  margin-top:8px;
+  padding:0;
+  background:none;
+  border:0;
+  text-align:left;
+  color:var(--encre);
+  font-family:var(--f-titre);
+  font-size:.9375rem;
+  line-height:1.35;
+}
+.bandeau .mot .note{display:block;font-size:1.1rem;line-height:1.1;color:var(--bleu-t)}
+.bandeau .txt{display:block;min-height:2.7em;transition:opacity .35s}
+.bandeau .txt.sort{opacity:0}
+.bandeau .fermer-b{
+  flex:none;
+  width:44px;
+  height:44px;
+  margin:-8px -12px 0 0;
+  display:grid;
+  place-items:center;
+  background:none;
+  border:0;
+  color:var(--encre-douce);
+}
+.bandeau .fermer-b svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}

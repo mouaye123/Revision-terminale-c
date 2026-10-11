@@ -1,0 +1,50 @@
+/* ===== MOUVEMENT : entrées de pages, progression, retours d'interaction =====
+   Seulement transform et opacity : fluide sur les téléphones modestes.
+   Tout est désactivé si l'utilisateur demande moins d'animations. */
+@keyframes monter{from{opacity:0;transform:translateY(14px)}}
+@keyframes remplir{from{opacity:0;transform:scaleX(0)}}
+@keyframes surligner{from{background-size:0 100%}}
+@keyframes pop{50%{transform:scale(1.03)}}
+@keyframes secouer{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes glisser{from{transform:translateX(100%)}}
+@keyframes fondu{from{opacity:0}}
+
+/* Les éléments d'une page arrivent l'un après l'autre (seulement quand on change de page) */
+#app.anime>*{animation:monter .5s var(--ease) backwards}
+#app.anime>*:nth-child(2){animation-delay:.05s}
+#app.anime>*:nth-child(3){animation-delay:.1s}
+#app.anime>*:nth-child(4){animation-delay:.15s}
+#app.anime>*:nth-child(5){animation-delay:.2s}
+#app.anime>*:nth-child(6){animation-delay:.25s}
+#app.anime>*:nth-child(7){animation-delay:.3s}
+#app.anime>*:nth-child(8){animation-delay:.35s}
+#app.anime>*:nth-child(n+9){animation-delay:.4s}
+
+/* Barres de progression : les cases se remplissent une à une */
+.anime .segments i{
+  transform-origin:left center;
+  animation:remplir .5s var(--ease) backwards;
+  animation-delay:calc(var(--i,0) * 22ms + 250ms);
+}
+/* Surligneur qui se trace */
+.anime .stab{animation:surligner .8s ease-out .45s backwards}
+
+/* Retour tactile */
+.btn,.chip,.action,.matiere,.choix button{transition:transform .15s var(--ease)}
+.btn:active,.chip:active,.action:active,.matiere:active,.choix button:active{transform:scale(.97)}
+@media (hover:hover){.matiere:hover,.action:hover{transform:translateY(-3px)}}
+
+/* Réponses du quiz */
+.choix .ok{animation:pop .35s}
+.choix .ko{animation:secouer .35s}
+
+/* Menu burger */
+#menu:not([hidden]){animation:glisser .28s var(--ease)}
+#voile:not([hidden]){animation:fondu .25s}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* Passage jour / nuit en douceur */
+body{transition:background-color .35s,color .35s}

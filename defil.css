@@ -1,0 +1,95 @@
+/* ===== BANDEAU DÉFILANT EN BAS D'ÉCRAN ===== */
+@keyframes defiler{to{transform:translateX(-50%)}}
+
+.defil{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:35;
+  display:flex;
+  align-items:stretch;
+  height:calc(40px + env(safe-area-inset-bottom,0px));
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  background:var(--bleu);
+  color:#fff;
+  font-size:.9375rem;
+  font-weight:600;
+  box-shadow:0 -4px 16px -8px rgba(20,24,58,.5);
+}
+
+/* Étiquette jaune, bord incliné */
+.defil-e{
+  flex:none;
+  display:flex;
+  align-items:center;
+  margin-right:-6px;
+  padding:0 20px 0 14px;
+  background:#FFE45C;
+  color:#14183A;
+  font-size:.8125rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%);
+  z-index:1;
+}
+
+/* Fenêtre dans laquelle le texte défile, bords estompés */
+.defil-v{
+  position:relative;
+  flex:1;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 22px,#000 calc(100% - 22px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 22px,#000 calc(100% - 22px),transparent);
+}
+.defil-p{
+  display:flex;
+  flex:none;
+  white-space:nowrap;
+  animation:defiler var(--duree,40s) linear infinite;
+  will-change:transform;
+}
+.defil-s{display:flex;flex:none;align-items:center}
+.defil-i::after{
+  content:"";
+  display:inline-block;
+  width:8px;
+  height:8px;
+  margin:0 26px;
+  background:#FFE45C;
+  transform:rotate(45deg);
+}
+
+/* Pause : bouton, ou survol du texte à la souris (jamais sur écran tactile) */
+.defil.pause .defil-p{animation-play-state:paused}
+@media (hover:hover) and (pointer:fine){
+  .defil-v:hover .defil-p{animation-play-state:paused}
+}
+
+/* Boutons pause / masquer */
+.defil-b{
+  flex:none;
+  width:40px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.12);
+  border:0;
+  border-left:1px solid rgba(255,255,255,.2);
+  color:#fff;
+}
+.defil-b svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.defil-b .i-lecture{display:none;fill:currentColor}
+.defil.pause .i-pause{display:none}
+.defil.pause .i-lecture{display:inline}
+.defil-b:focus-visible{outline:3px solid #FFE45C;outline-offset:-3px}
+
+/* Mode « moins d'animations » : un seul message fixe */
+.defil.calme .defil-p{animation:none;flex:1;min-width:0}
+.defil-fixe{display:block;flex:1;min-width:0;padding:0 12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Quand le bandeau est visible : le bouton WhatsApp monte, le contenu garde de la place */
+body.a-defilement .wa{bottom:calc(58px + env(safe-area-inset-bottom,0px))}
+body.a-defilement main{padding-bottom:152px}

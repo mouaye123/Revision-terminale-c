@@ -1,0 +1,94 @@
+/* ===== BASE : remise à zéro, texte, titres, liens, focus, utilitaires ===== */
+
+* {
+  box-sizing:border-box;
+  margin:0;
+}
+
+html {
+  -webkit-text-size-adjust:100%;
+}
+
+body {
+  font-family:var(--f-ui);
+  font-size:16px;
+  line-height:1.5;
+  color:var(--encre);
+  background:var(--papier);
+  padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));
+}
+
+h1,
+h2,
+h3 {
+  font-family:var(--f-titre);
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:-.01em;
+}
+
+h1 {
+  font-size:1.625rem;
+}
+
+h2 {
+  font-size:1.25rem;
+}
+
+h3 {
+  font-size:1.0625rem;
+}
+
+p {
+  max-width:60ch;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color:transparent;
+}
+
+button {
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
+}
+
+:focus-visible {
+  outline:3px solid var(--bleu-t);
+  outline-offset:2px;
+}
+
+.douce {
+  color:var(--encre-douce);
+  font-size:.9375rem;
+}
+
+.note {
+  font-family:var(--f-note);
+  font-size:1.3rem;
+  line-height:1.2;
+  color:var(--ct,var(--bleu-t));
+}
+
+.surligne {
+  background:linear-gradient(transparent 55%,var(--surligneur) 55%,var(--surligneur) 92%,transparent 92%);
+  padding:0 2px;
+}
+
+[hidden] {
+  display:none!important;
+}
+
+/* Icônes (SVG en ligne, héritent la couleur du texte) */
+.ico{
+  width:1.25em;
+  height:1.25em;
+  flex:none;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vertical-align:-.25em;
+}

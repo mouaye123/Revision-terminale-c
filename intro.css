@@ -1,0 +1,155 @@
+/* ===== PRÉSENTATION ANIMÉE (affichée à la première visite) ===== */
+#intro{
+  --c:var(--bleu);
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  flex-direction:column;
+  background:var(--papier);
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  overflow:hidden;
+}
+#intro .passer{
+  position:absolute;
+  top:calc(10px + env(safe-area-inset-top,0px));
+  right:12px;
+  z-index:2;
+  min-height:44px;
+  padding:0 14px;
+  background:none;
+  border:0;
+  color:var(--encre-douce);
+  font-weight:600;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+#intro .piste{flex:1;display:flex;min-height:0;transition:transform .5s var(--ease)}
+#intro .slide{
+  flex:0 0 100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:28px;
+  padding:64px max(24px,calc((100% - 520px) / 2)) 12px;
+}
+#intro .visuel{min-height:250px;display:grid;place-items:center}
+#intro .texte h2{font-size:2rem;line-height:1.12;letter-spacing:-.02em;margin:4px 0 12px}
+#intro .texte p{color:var(--encre-douce);font-size:1.0625rem}
+#intro .texte .note{color:var(--bleu-t)}
+#intro .pied{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  width:100%;
+  max-width:568px;
+  margin:0 auto;
+  padding:12px 24px 22px;
+}
+#intro .points{display:flex;gap:8px}
+#intro .points span{width:10px;height:10px;border-radius:5px;background:var(--ligne);transition:width .3s var(--ease),background .3s}
+#intro .points .on{width:30px;background:var(--c)}
+#intro .pied .btn{background:var(--c);border-color:var(--c);min-width:150px}
+
+/* Illustration 1 : les matières arrivent */
+.v1{display:flex;flex-direction:column;align-items:flex-start;gap:12px;width:100%}
+.v1 .note{font-size:1.7rem;transform:rotate(-4deg);color:var(--bleu-t)}
+.v1 .p{
+  display:inline-block;
+  background:var(--c);
+  color:#fff;
+  font-family:var(--f-titre);
+  font-size:1.375rem;
+  padding:12px 22px;
+  border-radius:var(--forme);
+}
+.v1 .p:nth-of-type(1){transform:rotate(-2deg)}
+.v1 .p:nth-of-type(2){transform:rotate(2deg);margin-left:28px}
+.v1 .p:nth-of-type(3){transform:rotate(-1deg);margin-left:8px}
+
+/* Illustration 2 : la liste des leçons */
+.v2{list-style:none;padding:0;margin:0;width:100%;display:grid;gap:10px}
+.v2 li{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  font-weight:600;
+  background:var(--carte);
+  border:1.5px solid var(--ligne);
+  border-radius:var(--forme);
+}
+
+/* Illustration 3 : la flashcard se retourne */
+.v3{--p:var(--philo-pale);display:grid;justify-items:center;gap:22px;width:100%}
+.v3 .fc{perspective:900px;width:min(280px,100%);height:150px}
+.v3 .in{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.v3 .f{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:16px 18px;
+  background:var(--carte);
+  border:1.5px solid var(--ligne);
+  border-radius:var(--forme);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+.v3 .f.d{background:var(--p);transform:rotateY(180deg)}
+.v3 .f b{font-family:var(--f-titre);font-size:1.0625rem}
+.v3 .puces{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+
+/* Illustration 4 : un document est scanné */
+.v4{display:grid;justify-items:center;gap:16px}
+.v4 .note{color:var(--bleu-t);font-size:1.4rem}
+.v4 .feuille{
+  position:relative;
+  width:170px;
+  height:220px;
+  display:grid;
+  align-content:start;
+  gap:12px;
+  padding:26px 18px;
+  background:var(--carte);
+  border:1.5px solid var(--ligne);
+  border-radius:var(--forme);
+}
+.v4 .feuille i{height:6px;border-radius:3px;background:var(--ligne)}
+.v4 .feuille i:nth-child(2){width:70%}
+.v4 .feuille i:nth-child(4){width:85%}
+.v4 .feuille i:nth-child(5){width:55%}
+.v4 .scan{position:absolute;left:8px;right:8px;top:8px;height:3px;border-radius:2px;background:var(--c);box-shadow:0 0 14px var(--c)}
+.v4 .coin{position:absolute;width:20px;height:20px;border:0 solid var(--c)}
+.v4 .coin.a{top:-6px;left:-6px;border-top-width:3px;border-left-width:3px}
+.v4 .coin.b{top:-6px;right:-6px;border-top-width:3px;border-right-width:3px}
+.v4 .coin.c{bottom:-6px;left:-6px;border-bottom-width:3px;border-left-width:3px}
+.v4 .coin.d{bottom:-6px;right:-6px;border-bottom-width:3px;border-right-width:3px}
+
+/* Animations : seulement sur la diapositive visible */
+@keyframes arrive{from{opacity:0;transform:translateY(26px) scale(.92)}}
+@keyframes entre{from{opacity:0;transform:translateX(44px)}}
+@keyframes retourne{0%,35%{transform:rotateY(0)}50%,85%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}
+@keyframes balaye{to{transform:translateY(196px)}}
+#intro .slide.actif .v1 .p{animation:arrive .6s var(--ease) backwards}
+#intro .slide.actif .v1 .p:nth-of-type(1){animation-delay:.2s}
+#intro .slide.actif .v1 .p:nth-of-type(2){animation-delay:.4s}
+#intro .slide.actif .v1 .p:nth-of-type(3){animation-delay:.6s}
+#intro .slide.actif .v2 li{animation:entre .6s var(--ease) backwards}
+#intro .slide.actif .v2 li:nth-child(1){animation-delay:.15s}
+#intro .slide.actif .v2 li:nth-child(2){animation-delay:.35s}
+#intro .slide.actif .v2 li:nth-child(3){animation-delay:.55s}
+#intro .slide.actif .v3 .in{animation:retourne 5s var(--ease) .6s infinite}
+#intro .slide.actif .v3 .chip{animation:arrive .5s var(--ease) backwards}
+#intro .slide.actif .v3 .chip:nth-child(2){animation-delay:.15s}
+#intro .slide.actif .v3 .chip:nth-child(3){animation-delay:.3s}
+#intro .slide.actif .v4 .scan{animation:balaye 2.2s ease-in-out infinite alternate}
+#intro .slide.actif .v4 .coin{animation:arrive .5s var(--ease) backwards}
+#intro .slide.actif .texte{animation:monter .6s var(--ease) .1s backwards}
+
+@media (prefers-reduced-motion:reduce){
+  #intro *{animation:none!important;transition:none!important}
+}
